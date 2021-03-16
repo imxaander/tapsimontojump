@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Tap simon to jump
+	</title>
+	<link rel="stylesheet" href="barcygame.css">
+</head>
+<body>
+	<div id="gamecanvas">
+		<div id="barcy"></div>
+
+		<div id="monster"></div>
+		<div style="visibility: hidden;">
+		<font align="center" id="dead">
+			<h1 id="restartext">Restart? Your Score is</h1> 
+			<h1 id="finalpoints"></h1>
+			<button onclick="restart()" style="position: relative; top: 50%; left: 45%;">Restart</button></font>
+		</div>
+	</div>
+	<h1 id="topchar"></h1>
+	<h1 id="leftblock"></h1>
+	<h1 id="points" style="visibility: visible;">Score : 0</h1>
+	
+<script type="text/javascript">
+	var barcy = document.getElementById("barcy");
+	var monster = document.getElementById("monster");
+	var points = 0;
+
+	function jump(){
+	if (barcy.classList != "animate") {
+		barcy.classList.add("animate");
+	}
+	setTimeout(function(){
+		barcy.classList.remove("animate");
+	},1000);
+	}
+
+	var patay = setInterval(function(){
+		var barcyTop = parseInt(window.getComputedStyle(barcy).getPropertyValue("top"));
+		var monsterLeft = parseInt(window.getComputedStyle(monster).getPropertyValue("left"));
+		//document.getElementById("topchar").innerHTML = "TopChar value "+barcyTop+"px";
+		//document.getElementById("leftblock").innerHTML = "LeftBlock value "+monsterLeft+"px";
+
+		if (monsterLeft<63 && monsterLeft>0 && barcyTop>=240) {
+		//alert("tanga mo natalo ka");
+		document.getElementById("finalpoints").innerHTML = "Score : " + parseInt(points/100);
+		monster.style.animation = "none";
+		monster.style.display ="none";
+		document.getElementById("points").innerHTML = "Score : 0";
+		document.getElementById("dead").style.visibility = "visible";
+		document.getElementById("points").style.visibility = "hidden";
+		}
+		else{
+			points++;
+			document.getElementById("points").innerHTML = "Score : " + parseInt(points/100);
+		}
+		},1);
+	
+
+	function restart(){
+		location.reload();
+	}
+</script>
+<button onclick="jump()">tap simon to jump<br><img src="https://cdn.discordapp.com/emojis/807229657312395264.png?v=1"></button>
+</body>
+</html>
+<!--if (monsterLeft<60 && monsterLeft>0 && barcyTop>=240) {
+		alert("tanga mo natalo ka");}
+	var points = setInterval(function(){
+		var point = 0;
+		point++
+		document.getElementById("points").innerHTML = "Score : " + point;
+	}1500);
+
+	var score = setInterval(function(){
+		var initial = 0;
+		var initial = initial + 1;
+		document.getElementById("points").innerHTML = "Scores : " + String(initial);
+	},1);
+-->

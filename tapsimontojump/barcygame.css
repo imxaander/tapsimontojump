@@ -1,0 +1,35 @@
+#gamecanvas{
+	border-style: solid;
+	border-width: 2px;
+	height: 400px;
+	width: 600px;
+	}
+#barcy{
+	width: 60px;
+	height: 120px;
+	background-color: blue;
+	position: relative;
+	top: 280px;
+}
+.animate{
+	animation: barcy 1s linear;
+}
+@keyframes barcy{
+	0%{top: 280px;}
+	30%{top: 210px;}
+	70%{top: 210px;}
+	100%{top: 280;}
+}
+#monster{
+	width: 40px;
+	height: 40px;
+	background-color: red;
+	position: relative;
+	left: 560px;
+	top: 240px;
+	animation: monster 2s infinite linear;
+}
+@keyframes monster{
+	0%{left:560px;}
+	100%{left: -560px;}
+}
