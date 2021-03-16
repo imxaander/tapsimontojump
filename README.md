@@ -1,2 +1,0 @@
-# tapsimontojump
-basic javascript game
